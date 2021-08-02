@@ -1,31 +1,31 @@
 #########################################################################################################################################
-#     Inicio do codigo para correÁ„o de missings e outliers
+#     Inicio do codigo para corre√ß√£o de missings e outliers
 ########################################################################################################################################
 
 #########################################################################################################################################
 ##############################################################################################################################################
-#Gera gr·ficos comparativos com todas as curvas antes e apÛs a correÁ„o
+#Gera gr√°ficos comparativos com todas as curvas antes e ap√≥s a corre√ß√£o
 vPlotar_graficos_Tot<-function(dad_PI,corrigido,dia_inicial,dia_final,vPinst,Tipo_var){
   
   cores=colors()
   
   ############################################################################
   ############################################################################
-  # Gr·ficos de geraÁ„o verificada
+  # Gr√°ficos de gera√ß√£o verificada
   if(Tipo_var==1){
-    arquivo=paste(file_p,"Dados de Saida/Graficos/GeraÁ„o Verificada",sep="/")
+    arquivo=paste(file_p,"Dados de Saida/Graficos/Gera√ß√£o Verificada",sep="/")
     setwd(arquivo)
     jpeg(filename=paste(vUsina,"_Ger_Verif_Filtr_Total.jpeg",sep=""),width = 1200, height = 700, units = "px", pointsize = 14,quality = 75)
    
     layout(matrix(c(1,2,3,4,5,6,7,8,9,10),2,1,byrow = TRUE),  TRUE)
     x=c(0,max(Per))
     y=c(0,vPinst)
-    plot(x, y, type="n", xlab="PerÌodo 30m-30m",col=2,ylab="PotÍncia [MW]",cex.axis = 1.5,cex.lab = 1.6)
+    plot(x, y, type="n", xlab="Per√≠odo 30m-30m",col=2,ylab="Pot√™ncia [MW]",cex.axis = 1.5,cex.lab = 1.6)
     for (idia in dia_inicial:dia_final){
       lines(1:48,dad_PI[idia,2:49], type="l", col=cores[round(runif(1,10,650))],lwd=1.5)
     }
     title(toString(paste("Dado original"),cex.main = 2.2))
-    plot(x, y, type="n", xlab="PerÌodo 30m-30m",col=2,ylab="PotÍncia [MW]",cex.axis = 1.5,cex.lab = 1.6)
+    plot(x, y, type="n", xlab="Per√≠odo 30m-30m",col=2,ylab="Pot√™ncia [MW]",cex.axis = 1.5,cex.lab = 1.6)
     for (idia in dia_inicial:dia_final){
       lines(1:48,corrigido[idia,2:49], type="l", col=cores[round(runif(1,10,650))],lwd=1.5)
     }
@@ -37,7 +37,7 @@ vPlotar_graficos_Tot<-function(dad_PI,corrigido,dia_inicial,dia_final,vPinst,Tip
   
   ############################################################################
   ############################################################################
-  # Gr·ficos de vento verificado
+  # Gr√°ficos de vento verificado
   if(Tipo_var==2){
     arquivo=paste(file_p,"Dados de Saida/Graficos/Vento Verificado",sep="/")
     setwd(arquivo)
@@ -46,12 +46,12 @@ vPlotar_graficos_Tot<-function(dad_PI,corrigido,dia_inicial,dia_final,vPinst,Tip
     layout(matrix(c(1,2,3,4,5,6,7,8,9,10),2,1,byrow = TRUE),  TRUE)
     x=c(0,max(Per))
     y=c(0,22)
-    plot(x, y, type="n", xlab="PerÌodo 30m-30m",col=2,ylab="Vento [m/s]",cex.axis = 1.5,cex.lab = 1.6)
+    plot(x, y, type="n", xlab="Per√≠odo 30m-30m",col=2,ylab="Vento [m/s]",cex.axis = 1.5,cex.lab = 1.6)
     for (idia in dia_inicial:dia_final){
       lines(1:48,dad_PI[idia,2:49], type="l", col=cores[round(runif(1,10,650))],lwd=1.5)
     }
     title(toString(paste("Dado original"),cex.main = 2.2))
-    plot(x, y, type="n", xlab="PerÌodo 30m-30m",col=2,ylab="Vento [m/s]",cex.axis = 1.5,cex.lab = 1.6)
+    plot(x, y, type="n", xlab="Per√≠odo 30m-30m",col=2,ylab="Vento [m/s]",cex.axis = 1.5,cex.lab = 1.6)
     for (idia in dia_inicial:dia_final){
       lines(1:48,corrigido[idia,2:49], type="l", col=cores[round(runif(1,10,650))],lwd=1.5)
     }
@@ -67,7 +67,7 @@ vPlotar_graficos_Tot<-function(dad_PI,corrigido,dia_inicial,dia_final,vPinst,Tip
 
 #########################################################################################################################################
 ##############################################################################################################################################
-#Gera gr·ficos comparativos com os resultados di·rios da correÁ„o
+#Gera gr√°ficos comparativos com os resultados di√°rios da corre√ß√£o
 vPlotar_graficos<-function(DadSoutlier,dad_pre,dad_filtr,dad_PI,padrao,dad_extra1,file_p,vUsina,Tipo_var,vPinst){
 
     tam=length(dad_pre)
@@ -78,10 +78,10 @@ vPlotar_graficos<-function(DadSoutlier,dad_pre,dad_filtr,dad_PI,padrao,dad_extra
   
   ############################################################################
   ############################################################################
-  # Gr·ficos de geraÁ„o verificada
+  # Gr√°ficos de gera√ß√£o verificada
   if(Tipo_var==1){
     
-    arquivo=paste(file_p,"Dados de Saida/Graficos/GeraÁ„o Verificada",sep="/")
+    arquivo=paste(file_p,"Dados de Saida/Graficos/Gera√ß√£o Verificada",sep="/")
     setwd(arquivo)
     jpeg(filename=paste(vUsina,"_",Dat,"_Ger_Verif_Filtr.jpeg",sep=""),width = 900, height = 700, units = "px", pointsize = 14,quality = 75)
     layout(matrix(c(1,2,3,4,5,6,7,8,9,10),1,1,byrow = TRUE),  TRUE)
@@ -89,15 +89,15 @@ vPlotar_graficos<-function(DadSoutlier,dad_pre,dad_filtr,dad_PI,padrao,dad_extra
     x=c(0,max(Per))
     # y=c(0,max(cbind(max(dad_pre[which(dad_pre!='999')]),max(dad_filtr[which(dad_filtr!='999')]),max(dad_PI[which(dad_PI<150)])),max(padrao)))  
     y=c(0,vPinst)
-    plot(x, y, type="n", xlab="PerÌodo 30m-30m",col=2,ylab="PotÍncia [MW]",cex.axis = 1.5,cex.lab = 1.6)
+    plot(x, y, type="n", xlab="Per√≠odo 30m-30m",col=2,ylab="Pot√™ncia [MW]",cex.axis = 1.5,cex.lab = 1.6)
     lines(Per,DadSoutlier, type="l", col="purple",lwd=16)
     lines(Per,dad_pre, type="l", col="cyan",lwd=11)
     lines(Per,dad_PI, type="l", col="red",lwd=7)
     lines(Per,dad_extra1, type="l", col="blue",lwd=2.5)
     lines(Per,dad_filtr, type="l", col="black",lwd=2.5)
     lines(Per,padrao, type="l", col="green",lwd=2)
-    title(toString(paste("GeraÁ„o usina teste N∫",iusi," \n",substr(Dat, 7, 8),"/",substr(Dat, 5, 6),"/",substr(Dat, 0, 4))),cex.main = 2.2)
-    legend("topleft", c("Sem outlier",paste0(FontesDados[1]," PrÈ-Trat"),paste0(FontesDados[1]," Orig"),FontesDados[2],"Filtrado","Padr„o"), col = c("purple","cyan","red","blue","black","green"),
+    title(toString(paste("Gera√ß√£o usina teste N¬∫",iusi," \n",substr(Dat, 7, 8),"/",substr(Dat, 5, 6),"/",substr(Dat, 0, 4))),cex.main = 2.2)
+    legend("topleft", c("Sem outlier",paste0(FontesDados[1]," Pr√©-Trat"),paste0(FontesDados[1]," Orig"),FontesDados[2],"Filtrado","Padr√£o"), col = c("purple","cyan","red","blue","black","green"),
            text.col = "black", lty = c(1, 1, 1),
            merge = TRUE,lwd=3,cex = 2.2)
     dev.off()
@@ -106,7 +106,7 @@ vPlotar_graficos<-function(DadSoutlier,dad_pre,dad_filtr,dad_PI,padrao,dad_extra
   
   ############################################################################
   ############################################################################
-  # Gr·ficos de vento verificado
+  # Gr√°ficos de vento verificado
   if(Tipo_var==2){
     arquivo=paste(file_p,"Dados de Saida/Graficos/Vento Verificado",sep="/")
     setwd(arquivo)
@@ -116,15 +116,15 @@ vPlotar_graficos<-function(DadSoutlier,dad_pre,dad_filtr,dad_PI,padrao,dad_extra
     x=c(0,max(Per))
     # y=c(0,max(cbind(max(dad_pre[which(dad_pre!='999')]),max(dad_filtr[which(dad_filtr!='999')]),max(dad_PI[which(dad_PI<150)])),max(padrao)))          
     y=c(0,22)
-    plot(x, y, type="n", xlab="PerÌodo 30m-30m",col=2,ylab="Velocidade [m/s]",cex.axis = 1.5,cex.lab = 1.6)
+    plot(x, y, type="n", xlab="Per√≠odo 30m-30m",col=2,ylab="Velocidade [m/s]",cex.axis = 1.5,cex.lab = 1.6)
     lines(Per,DadSoutlier, type="l", col="purple",lwd=16)
         lines(Per,dad_pre, type="l", col="cyan",lwd=11)
     lines(Per,dad_PI, type="l", col="red",lwd=7)
     lines(Per,dad_extra1, type="l", col="blue",lwd=2.5)
     lines(Per,dad_filtr, type="l", col="black",lwd=3.5)
     lines(Per,padrao, type="l", col="green",lwd=2)
-    title(toString(paste("Vento usina teste N∫",iusi," \n",substr(Dat, 7, 8),"/",substr(Dat, 5, 6),"/",substr(Dat, 0, 4))),cex.main = 2.2)
-    legend("topleft", c("Sem outlier",paste0(FontesDados[1]," PrÈ-Trat"),paste0(FontesDados[1]," Orig"),FontesDados[3],"Filtrado","Padr„o"), col = c("purple","cyan","red","blue","black","green"),
+    title(toString(paste("Vento usina teste N¬∫",iusi," \n",substr(Dat, 7, 8),"/",substr(Dat, 5, 6),"/",substr(Dat, 0, 4))),cex.main = 2.2)
+    legend("topleft", c("Sem outlier",paste0(FontesDados[1]," Pr√©-Trat"),paste0(FontesDados[1]," Orig"),FontesDados[3],"Filtrado","Padr√£o"), col = c("purple","cyan","red","blue","black","green"),
            text.col = "black", lty = c(1, 1, 1),
            merge = TRUE,lwd=3,cex = 2.2)
     dev.off()
@@ -136,7 +136,7 @@ vPlotar_graficos<-function(DadSoutlier,dad_pre,dad_filtr,dad_PI,padrao,dad_extra
 
 #########################################################################################################################################
 #########################################################################################################################################
-# Filtro de nÌvel e tendÍncia local para preenchimento de dados faltantes  
+# Filtro de n√≠vel e tend√™ncia local para preenchimento de dados faltantes  
 Filtro_Dinamico<-function(ret,dad_filtar,fator_loess){#Metodo para filtragem de serie com base em Filtro de Kalman
   ############################################################################
   ############################################################################
@@ -152,13 +152,13 @@ Filtro_Dinamico<-function(ret,dad_filtar,fator_loess){#Metodo para filtragem de 
   
   ####################################################
   ####################################################
-  # Escolha do padr„o associado a sÈrie a filtrar
+  # Escolha do padr√£o associado a s√©rie a filtrar
   erro=matrix(0, nrow = 1, ncol = tam[1])
   dg=matrix(0, nrow = 1, ncol = 2)
   for (ic in 1:nclases){
     for(it in 1:tam[1]){
       if(!is.na(Padroes[it,(nclases+2)])){
-        erro[it]=Padroes[it,(nclases+2)]-Padroes[it,(ic+1)]#erro do padr„o para a serie a filtrar
+        erro[it]=Padroes[it,(nclases+2)]-Padroes[it,(ic+1)]#erro do padr√£o para a serie a filtrar
       }
       dg[ic]=sqrt(sum((erro)^2))#distancia euclidiana
     }
@@ -180,7 +180,7 @@ Filtro_Dinamico<-function(ret,dad_filtar,fator_loess){#Metodo para filtragem de 
 
   ####################################################
   ####################################################
-  # Cria fator que ajusta nÌvel do padrao referente ao dia a ser corrigido
+  # Cria fator que ajusta n√≠vel do padrao referente ao dia a ser corrigido
   pos=which(dad_filtar!='999'|!is.na(dad_filtar))
   M_dado=mean(dad_filtar[pos])
   M_padrao = mean(padrao)
@@ -190,14 +190,14 @@ Filtro_Dinamico<-function(ret,dad_filtar,fator_loess){#Metodo para filtragem de 
   
   ####################################################
   ####################################################
-  # Cria limites inferiores para identificaÁ„o de outliers
+  # Cria limites inferiores para identifica√ß√£o de outliers
   if(fator!=0){
     padrao = padrao * fator;
     lm.D9 <- lm(dsa ~ padrao)
-    stats <- 1 - (sum((dsa-predict(lm.D9))^2,na.rm=T)/sum((dsa-mean(dsa,na.rm=T))^2,na.rm=T))#Pega o R≤ para analise da qualidade do ajuste
+    stats <- 1 - (sum((dsa-predict(lm.D9))^2,na.rm=T)/sum((dsa-mean(dsa,na.rm=T))^2,na.rm=T))#Pega o R¬≤ para analise da qualidade do ajuste
     #stats=summary(lm.D9)$r.squared
     
-    # Ajusta Reta 45∫
+    # Ajusta Reta 45¬∫
     err_reta     = rep(0,ntempos);
     # reta_scatter = [ ];
     for (t in 1:ntempos){
@@ -223,25 +223,25 @@ Filtro_Dinamico<-function(ret,dad_filtar,fator_loess){#Metodo para filtragem de 
     
     # minimo=min(c(err_reta,m_li,m_ls))
     # maximo=max(c(err_reta,m_li,m_ls))
-    # plot(c(1,ntempos), c(minimo,maximo), type="p", xlab="PerÌodo",col="blue",ylab="Erro" )
+    # plot(c(1,ntempos), c(minimo,maximo), type="p", xlab="Per√≠odo",col="blue",ylab="Erro" )
     # points(1:ntempos, err_reta,col="blue")
     # lines(1:ntempos,m_li, type="l", col="green",lwd=2.5)
     # lines(1:ntempos,m_ls, type="l", col="red",lwd=2.5)
-    # title(toString("Processo de IdentificaÁ„o de Dados Aberrantes"),cex.main = 1.5)
+    # title(toString("Processo de Identifica√ß√£o de Dados Aberrantes"),cex.main = 1.5)
     # legend("topleft", c("Lim Sup","Lim Inf", "Erro"), col = c("red","green","blue"),text.col = "black", lty = c(1, 1, 1), merge = TRUE,cex = 1.6)
     # 
     # # plot regressao
     # plot(c(0,padrao), c(0,dsa), type="p", xlab="Valor",col="red",ylab="Valor",lwd=2)
     # lines(padrao,padrao, type="l", col="blue",lwd=4)
     # lines(padrao,lm.D9$coefficients[2]*padrao+lm.D9$coefficients[1],lwd=4,type='l',col="black")
-    # legend("topleft", c("Dado PrÈ-Trat","Padr„o","Regress„o"), col = c("red","blue","black"),text.col = "black", lty = c(1, 1, 1), merge = TRUE,cex = 1.6)
+    # legend("topleft", c("Dado Pr√©-Trat","Padr√£o","Regress√£o"), col = c("red","blue","black"),text.col = "black", lty = c(1, 1, 1), merge = TRUE,cex = 1.6)
     # title(toString("Ajuste da Reta"),cex.main = 1.5)
     # 
-    # plot(1:48,dsa,col='red',type='l',xlab="PerÌodo",ylab="Valor",lwd=2)
+    # plot(1:48,dsa,col='red',type='l',xlab="Per√≠odo",ylab="Valor",lwd=2)
     # lines(1:48,padrao,col='blue',lwd=2)
     # lines(1:48,lm.D9$coefficients[2]*padrao+lm.D9$coefficients[1],col='black',lwd=2)
-    # title(toString("Ajuste da regress„o"),cex.main = 1.5)
-    # legend("topleft", c("Dado PrÈ-Tra","Padr„o","Regress„o"), col = c("red","blue","black"),text.col = "black", lty = c(1, 1, 1), merge = TRUE,cex = 1.6)
+    # title(toString("Ajuste da regress√£o"),cex.main = 1.5)
+    # legend("topleft", c("Dado Pr√©-Tra","Padr√£o","Regress√£o"), col = c("red","blue","black"),text.col = "black", lty = c(1, 1, 1), merge = TRUE,cex = 1.6)
     
     # %identifica outliers transformando-os em missings
     for (t in 1:ntempos){
@@ -261,7 +261,7 @@ Filtro_Dinamico<-function(ret,dad_filtar,fator_loess){#Metodo para filtragem de 
   
   ############################################################################
   ############################################################################
-  # Executa o modelo do Filtro_Dinamico de nÌvel e tendencia local
+  # Executa o modelo do Filtro_Dinamico de n√≠vel e tendencia local
   
   ####################################################
   ####################################################
@@ -285,7 +285,7 @@ Filtro_Dinamico<-function(ret,dad_filtar,fator_loess){#Metodo para filtragem de 
   
   ####################################################
   ####################################################
-  # InÌcio de processo iterativo de Kalmam
+  # In√≠cio de processo iterativo de Kalmam
   for (t in 1:ntempos){
     # captura prob. do dado anterior em relacao ao IC do padrao
     m_media = padrao[t];
@@ -301,7 +301,7 @@ Filtro_Dinamico<-function(ret,dad_filtar,fator_loess){#Metodo para filtragem de 
     a    = G %*% m0;
     R    = G %*% C0 %*% t(G) + W;
     
-    # previs„o 1-step
+    # previs√£o 1-step
     f1[t] = ((F)%*%rep(1,2)) %*% a;
     Q1    = (F) * R * F + V;
     
@@ -337,10 +337,10 @@ Filtro_Dinamico<-function(ret,dad_filtar,fator_loess){#Metodo para filtragem de 
   
   ####################################################
   ####################################################
-  # SuavizaÁ„o dos valores corrigidos pelo filtro de loess
+  # Suaviza√ß√£o dos valores corrigidos pelo filtro de loess
   ds_cor=Filtro_loess(ds_cor,fator_loess,dias_Filtar)
   
-  # plot(2:49,ds[1:48], xlab="PerÌodo",col="blue",ylab="dado",lwd=2)
+  # plot(2:49,ds[1:48], xlab="Per√≠odo",col="blue",ylab="dado",lwd=2)
   # lines(2:49,ds[1:48],col="blue",ylab="dado",lwd=2)
   # ds_cor[1,2:49]=ds;ds_cor=Filtro_loess(ds_cor,0.9,dias_Filtar)
   # lines(2:49,ds_cor[2:49],col="black",ylab="dado",lwd=2)
@@ -351,7 +351,7 @@ Filtro_Dinamico<-function(ret,dad_filtar,fator_loess){#Metodo para filtragem de 
   # legend("topleft", c("Dado Original","a = 0.9","a = 0.5", "a = 0.13"), col = c("blue","black","green","red"),
   #        text.col = "black",
   #        merge = TRUE,lwd=3,cex = 1)
-  # title(toString(paste("SuavizaÁ„o loess"),cex.main = 2.2))
+  # title(toString(paste("Suaviza√ß√£o loess"),cex.main = 2.2))
   ####################################################
   
   
@@ -365,7 +365,7 @@ Filtro_Dinamico<-function(ret,dad_filtar,fator_loess){#Metodo para filtragem de 
 
 #########################################################################################################################################
 #########################################################################################################################################
-# Elimina padrıes poucos representativos
+# Elimina padr√µes poucos representativos
 Elimina_Padroes<-function(ret,nclases){
   Padroes=ret[[1]]
   devPadroes=ret[[2]]
@@ -377,7 +377,7 @@ Elimina_Padroes<-function(ret,nclases){
   
   ####################################################
   ####################################################
-  #elimina padroes com um n∫ de series muito pequenas pertecentes a ele
+  #elimina padroes com um n¬∫ de series muito pequenas pertecentes a ele
   for (iclas in 1:nclases){
     to=length(which(Clas_series==iclas))
     perc=to/tot*100
@@ -396,7 +396,7 @@ Elimina_Padroes<-function(ret,nclases){
 
 #########################################################################################################################################
 #########################################################################################################################################
-# Filtro de suavizaÁ„o
+# Filtro de suaviza√ß√£o
 Filtro_loess<-function(dados,ordem,dias_Filtar){
   tam=dim(dados)
   ndias=tam[1]
@@ -407,10 +407,10 @@ Filtro_loess<-function(dados,ordem,dias_Filtar){
     
     y <- as.numeric(dados[idia,2:(Per+1)])
     
-    # Aplica a suavizaÁ„o de loess
+    # Aplica a suaviza√ß√£o de loess
     yloess <- loess(y ~ x, span=ordem, data.frame(x=x, y=y))
     
-    #  C·lculo dos valores suavizados pelo loess para todos os pontos ao longo da curva
+    #  C√°lculo dos valores suavizados pelo loess para todos os pontos ao longo da curva
     ypredict <- predict(yloess, data.frame(x=x))
     
     dados[idia,2:(Per+1)]=ypredict
@@ -424,12 +424,12 @@ trunc.dig <- function(x, digits){
 } 
 
 #########################################################################################################################################
-# Inicio da montagem dos dados para posteriormente usar as funÁoes
+# Inicio da montagem dos dados para posteriormente usar as fun√ßoes
 #########################################################################################################################################
 
 ############################################################################
 ############################################################################
-# InicializaÁ„o de vari·veis
+# Inicializa√ß√£o de vari√°veis
 vPlotar=Plotar[iusi]
 vUsina=Usinas[iusi]
 vPinst=Pinst[iusi]
@@ -448,8 +448,8 @@ tam=dim(dad1)
 
 
 intervalo=tam[2]-1;#intervalo considerado (24h correspondem a 48 valores de 30 em 30m)
-dia_final=tam[1]#dia final que ser· filtrado das series passadas
-dia_inicial=1#dia inicial que ser· filtrado das series passadas
+dia_final=tam[1]#dia final que ser√° filtrado das series passadas
+dia_inicial=1#dia inicial que ser√° filtrado das series passadas
 
 dad1_ns999=dad1_n
 dad1_ns999[dad1_ns999==999|is.na(dad1_ns999)]=0
@@ -458,7 +458,7 @@ lim=c(0,max(dad1_ns999[1:(tam1[1]-1),2:(intervalo+1)]))
 
 ############################################################################
 ############################################################################
-#realizaÁ„o da classificaÁ„o dos padrıes requeridos
+#realiza√ß√£o da classifica√ß√£o dos padr√µes requeridos
 arquivo=paste(file_p,"Codigos/R","Classificacao.R",sep="/")
 for(i in 1:20){
   Cl=tryCatch(source(arquivo),error=function(x, ...) {  a <- "Com Erro" ; return(a)} )
@@ -466,21 +466,21 @@ for(i in 1:20){
     break
   }
   if(i==20){
-    Erro=Com_Erro#Vari·vel n„o existente, sempre quando o processo de classificaÁ„o n„o funcionar
+    Erro=Com_Erro#Vari√°vel n√£o existente, sempre quando o processo de classifica√ß√£o n√£o funcionar
   }
 }
 ############################################################################
 
 ############################################################################
 ############################################################################
-#eliminaÁ„o de padrıes muito atÌpicos do conjunto de padrıes
+#elimina√ß√£o de padr√µes muito at√≠picos do conjunto de padr√µes
 par(mfrow=c(1,1))
 ret=Elimina_Padroes(ret,nclases)
 ############################################################################
 
 ############################################################################
 ############################################################################
-# correÁ„o de missing e outlier
+# corre√ß√£o de missing e outlier
 corrigido=matrix(NA, nrow = dia_final, ncol = 49)
 Dat=dad1[,1]
 PadrAnt=ret[[1]][,2]
@@ -495,7 +495,7 @@ for (idia in dia_inicial:dia_final){
   
   ####################################################
   ####################################################
-  # AplicaÁ„o do filtro
+  # Aplica√ß√£o do filtro
   cor=Filtro_Dinamico(ret,dad_filtr,fator_loess)
   ####################################################
   
@@ -514,7 +514,7 @@ for (idia in dia_inicial:dia_final){
   
   ####################################################
   ####################################################
-  # GeraÁ„o de gr·ficos
+  # Gera√ß√£o de gr√°ficos
   if (vPlotar==1){
     dad_filtr=dad_filtr_Orig
     vPlotar_graficos(DadSoutlier,dad_pre,corrigido[idia,2:49],dad_PI[idia,2:49],padrao,dad_extra1[idia,2:49],file_p,vUsina,Tipo_var,vPinst)
@@ -526,6 +526,6 @@ DadoFiltrado=corrigido
 
 ############################################################################
 ############################################################################
-# Gera gr·ficos com todas as curvas 
+# Gera gr√°ficos com todas as curvas 
 vPlotar_graficos_Tot(dad_PI,corrigido,dia_inicial,dia_final,vPinst,Tipo_var)
 ############################################################################
