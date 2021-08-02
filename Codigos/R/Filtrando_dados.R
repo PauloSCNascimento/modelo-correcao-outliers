@@ -1,32 +1,32 @@
 ###########################################################################################################################################
 ###########################################################################################################################################
-#Leitura das bibliotecas necess·rias
+#Leitura das bibliotecas necess√°rias
 rm(list=ls())
 
-ptm <<- proc.time()#captura o tempo de inÌcio do algoritmo
+ptm <<- proc.time()#captura o tempo de in√≠cio do algoritmo
 
 
 if(!require("fda"))  install.packages("fda", repos = "http://cran.us.r-project.org")
-tryCatch(if(!require("rstudioapi"))  install.packages("rstudioapi", repos = "http://cran.us.r-project.org"),#VerificaÁ„o se a biblioteca est· instalada, caso n„o esteja È instalada automaticamente
+tryCatch(if(!require("rstudioapi"))  install.packages("rstudioapi", repos = "http://cran.us.r-project.org"),#Verifica√ß√£o se a biblioteca est√° instalada, caso n√£o esteja √© instalada automaticamente
          error=function(x, ...) {  a <- "Com Erro" ; return(a)} )
 ###########################################################################################################################################
 
 
 ###########################################################################################################################################
 ###########################################################################################################################################
-# DefiniÁ„o do diretÛrio base
+# Defini√ß√£o do diret√≥rio base
 Dir=tryCatch(dirname(rstudioapi::getActiveDocumentContext()$path),error=function(x, ...) {  a <- "Com Erro" ; return(a)} )
 if(Dir=="Com Erro"){Dir <-getwd()}
 
-file_p=gsub("/Codigos/R","",Dir)
+file_p=gsub("/Codigos/R","",Dir) # Define diret√≥rio
 ###########################################################################################################################################
 
 
 ###########################################################################################################################################
 ###########################################################################################################################################
-# DefiniÁ„o das vari·veis de entrada
-nclases=15;#N∫ de padrıes considerados, se NA cria o n˙mero automatico, proporcional um cluster por mÍs
-nepocas=100;#N∫ de iteraÁıes usadas no modelo se classificaÁ„o de padrıes
+# Defini√ß√£o das vari√°veis de entrada
+nclases=15;#N¬∫ de padr√µes considerados, se NA cria o n√∫mero automatico, proporcional um cluster por m√™s
+nepocas=100;#N¬∫ de itera√ß√µes usadas no modelo se classifica√ß√£o de padr√µes
 fator_loess=0.13
 
 Dat_inicial=20200101
@@ -35,7 +35,7 @@ Dat_final  =20201231
 
 ###########################################################################################################################################
 ###########################################################################################################################################
-# InicializaÁ„o de vari·veis secundarias
+# Inicializa√ß√£o de vari√°veis secundarias
 FontesDados=c("Fonte1","Fonte2","Fonte3")
 arquivo=paste(file_p,"Dados de Entrada",sep="/")
 setwd(arquivo)
@@ -57,7 +57,7 @@ Imprimir=as.numeric(Dad[2:tam[1],5])
 
 
 
-arquivo=paste(file_p,"Dados de Entrada","GeraÁ„o Verificada","Dados Originais",sep="/")
+arquivo=paste(file_p,"Dados de Entrada","Gera√ß√£o Verificada","Dados Originais",sep="/")
 setwd(arquivo)
 dados <- read.table(paste(Usinas[1],"_Ger_Verif_",FontesDados[1],".txt",sep = ""),header=FALSE, sep=";")
 
@@ -66,13 +66,13 @@ dados <- read.table(paste(Usinas[1],"_Ger_Verif_",FontesDados[1],".txt",sep = ""
 ####################################################
 #Estrategia para eliminar um caractere indesejado que aparece na primeira na primeira data do arquivo
 dat=as.matrix(dados[,1])
-if(substr(dat[1],1,1)=="Ô"){
+if(substr(dat[1],1,1)=="√Ø"){
   dat[1]=substr(dat[1],4,12)
 }
 dat=as.numeric(dat)
 ####################################################
 
-DeH=which(dat==Dat_inicial)#pega a posiÁ„o da data inicial do historico
+DeH=which(dat==Dat_inicial)#pega a posi√ß√£o da data inicial do historico
 AteH=which(dat==Dat_final)-1
 
 ###########################################################################################################################################
@@ -82,19 +82,19 @@ AteH=which(dat==Dat_final)-1
 Nusinas=length(Usinas)
 for (iusi in 1:Nusinas){
   if(Ini_Oper[iusi]>Dat_inicial){
-    DeH=which(dat==Ini_Oper[iusi])#pega a posiÁ„o da data inicial do historico
+    DeH=which(dat==Ini_Oper[iusi])#pega a posi√ß√£o da data inicial do historico
   }else{
-    DeH=which(dat==Dat_inicial)#pega a posiÁ„o da data inicial do historico
+    DeH=which(dat==Dat_inicial)#pega a posi√ß√£o da data inicial do historico
   }
   
   ############################################################################
   ############################################################################
-  # Filtrando geraÁ„o verificado
+  # Filtrando gera√ß√£o verificado
   
   ####################################################
   ####################################################
-  # Leitura e preparaÁ„o de dados
-  arquivo=paste(file_p,"Dados de Entrada","GeraÁ„o Verificada","Dado Pre Tratado",sep="/")
+  # Leitura e prepara√ß√£o de dados
+  arquivo=paste(file_p,"Dados de Entrada","Gera√ß√£o Verificada","Dado Pre Tratado",sep="/")
   setwd(arquivo)
   dad1_n <- read.table(paste(Usinas[iusi],"_Ger_Verif_",FontesDados[1],".txt",sep = ""),header=FALSE, sep=";")
   dad1_n=dad1_n[(DeH:(AteH)),]
@@ -107,7 +107,7 @@ for (iusi in 1:Nusinas){
   dad1=dad1_n
   dad1_orig=dad1_n
   
-  arquivo=paste(file_p,"Dados de Entrada","GeraÁ„o Verificada","Dados Originais",sep="/")
+  arquivo=paste(file_p,"Dados de Entrada","Gera√ß√£o Verificada","Dados Originais",sep="/")
   setwd(arquivo)
   dad_PI_n <- read.table(paste(Usinas[iusi],"_Ger_Verif_",FontesDados[1],".txt",sep = ""),header=FALSE, sep=";")
   dad_PI_n=dad_PI_n[(DeH:(AteH)),]
@@ -127,7 +127,7 @@ for (iusi in 1:Nusinas){
   
   ####################################################
   ####################################################
-  # ExecuÁ„o do filtro de correÁ„o de dados
+  # Execu√ß√£o do filtro de corre√ß√£o de dados
   Tipo_var=1
   arquivo=paste(file_p,"Codigos/R","Filtro_Eolico.R",sep="/")
   source(arquivo)
@@ -135,14 +135,14 @@ for (iusi in 1:Nusinas){
   
   ####################################################
   ####################################################
-  # Escrita dos histÛricos corrigidos
+  # Escrita dos hist√≥ricos corrigidos
   Ger_Filtrada=DadoFiltrado
   # Ger_Filtrada=Filtro(dad1_n,dad_PI_n,dad1,dad_PI,dad_extra1,nclases,nepocas,file_p,fator_loess,Plotar[iusi],Usinas[iusi],1,Pinst[iusi],Hora_ini_Prev)
   Ger_Filtrada_n=dad1_orig
   Ger_Filtrada_n[(DeH:(AteH)),]=Ger_Filtrada
   #escrevendo a tabela com os dados corrigidos
   if (Imprimir[iusi]==1){
-    arquivo=paste(file_p,"Dados de Saida/Arquivos","GeraÁ„o Verificada",paste(Usinas[iusi],"_Ger_Verif_Filtr_Consis.txt",sep=""),sep="/")
+    arquivo=paste(file_p,"Dados de Saida/Arquivos","Gera√ß√£o Verificada",paste(Usinas[iusi],"_Ger_Verif_Filtr_Consis.txt",sep=""),sep="/")
     write.table(Ger_Filtrada_n,  file.path(arquivo), sep=";",row.names = FALSE, col.names = FALSE)
   }
   ####################################################
@@ -154,7 +154,7 @@ for (iusi in 1:Nusinas){
   
   ####################################################
   ####################################################
-  # Leitura e preparaÁ„o de dados
+  # Leitura e prepara√ß√£o de dados
   arquivo=paste(file_p,"Dados de Entrada","Vento Verificado","Dado Pre Tratado",sep="/")
   setwd(arquivo)
   dad1_n <- read.table(paste(Usinas[iusi],"_Ven_Verif_",FontesDados[1],".txt",sep = ""),header=FALSE, sep=";")
@@ -182,7 +182,7 @@ for (iusi in 1:Nusinas){
   
   ####################################################
   ####################################################
-  # ExecuÁ„o do filtro de correÁ„o de dados
+  # Execu√ß√£o do filtro de corre√ß√£o de dados
   Tipo_var=2
   arquivo=paste(file_p,"Codigos/R","Filtro_Eolico.R",sep="/")
   source(arquivo)
@@ -190,7 +190,7 @@ for (iusi in 1:Nusinas){
   
   ####################################################
   ####################################################
-  # Escrita dos histÛricos corrigidos
+  # Escrita dos hist√≥ricos corrigidos
   Ven_Filtrada=DadoFiltrado
   Ven_Filtrada_n=dad1_orig
   Ven_Filtrada_n[(DeH:(AteH)),]=Ven_Filtrada
@@ -206,10 +206,10 @@ for (iusi in 1:Nusinas){
 
 ###########################################################################################################################################
 ###########################################################################################################################################
-# Impress„o dos tempos de simulaÁ„o
+# Impress√£o dos tempos de simula√ß√£o
 Tempo_proc=(proc.time() - ptm)/60
 Tempo=Tempo_proc[1:3]
 Dados_Simul=cbind("Tempo Comutacional gasto em min:",Tempo[3])
-arquivo=paste(file_p,"Dados de Saida/Tempo computacional","Tempo de SimulaÁ„o.txt",sep="/")
+arquivo=paste(file_p,"Dados de Saida/Tempo computacional","Tempo de Simula√ß√£o.txt",sep="/")
 write.table(Dados_Simul,  file.path(arquivo), sep=";",row.names = FALSE, col.names = FALSE)
 ###########################################################################################################################################
