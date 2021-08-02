@@ -11,9 +11,9 @@ vPlotar_graficos_Tot<-function(dad_PI,corrigido,dia_inicial,dia_final,vPinst,Tip
   
   ############################################################################
   ############################################################################
-  # Gráficos de geração verificada
+  # Gráficos de Geracao Verificada
   if(Tipo_var==1){
-    arquivo=paste(file_p,"Dados de Saida/Graficos/Geração Verificada",sep="/")
+    arquivo=paste(file_p,"Dados de Saida/Graficos/Geracao Verificada",sep="/")
     setwd(arquivo)
     jpeg(filename=paste(vUsina,"_Ger_Verif_Filtr_Total.jpeg",sep=""),width = 1200, height = 700, units = "px", pointsize = 14,quality = 75)
    
@@ -78,10 +78,10 @@ vPlotar_graficos<-function(DadSoutlier,dad_pre,dad_filtr,dad_PI,padrao,dad_extra
   
   ############################################################################
   ############################################################################
-  # Gráficos de geração verificada
+  # Gráficos de Geracao Verificada
   if(Tipo_var==1){
     
-    arquivo=paste(file_p,"Dados de Saida/Graficos/Geração Verificada",sep="/")
+    arquivo=paste(file_p,"Dados de Saida/Graficos/Geracao Verificada",sep="/")
     setwd(arquivo)
     jpeg(filename=paste(vUsina,"_",Dat,"_Ger_Verif_Filtr.jpeg",sep=""),width = 900, height = 700, units = "px", pointsize = 14,quality = 75)
     layout(matrix(c(1,2,3,4,5,6,7,8,9,10),1,1,byrow = TRUE),  TRUE)
@@ -459,8 +459,8 @@ lim=c(0,max(dad1_ns999[1:(tam1[1]-1),2:(intervalo+1)]))
 ############################################################################
 ############################################################################
 #realização da classificação dos padrões requeridos
-arquivo=paste(file_p,"Codigos/R","Classificacao.R",sep="/")
 for(i in 1:20){
+ arquivo=paste(file_p,"Codigos/R","Classificacao.R",sep="/") 
   Cl=tryCatch(source(arquivo),error=function(x, ...) {  a <- "Com Erro" ; return(a)} )
   if(Cl!="Com Erro"){
     break

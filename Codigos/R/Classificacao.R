@@ -64,7 +64,7 @@ for (ic in 1:nclases){
   # Salva gráficos de geração
   if(Tipo_var==1){
     title(toString(paste("Classe ",ic,"para Ger. da",vUsina)),cex.main = 1.5)
-    arquivo=paste(file_p,"Dados de Saida/Graficos/Padrões/Geração Verificada",sep="/")
+    arquivo=paste(file_p,"Dados de Saida/Graficos/Padroes/Geracao Verificada",sep="/")
     setwd(arquivo)
     dev.copy(device = jpeg, file = paste(vUsina,"_Classe_",ic,"Ger.jpeg",sep=""), width = 700, height = 700, res = 100)
     dev.off()
@@ -76,7 +76,7 @@ for (ic in 1:nclases){
   # Salva gráficos de vento verificado
   if(Tipo_var==2){
     title(toString(paste("Classe ",ic,"para Vento da",vUsina)),cex.main = 1.5)
-    arquivo=paste(file_p,"Dados de Saida/Graficos/Padrões/Vento Verificado",sep="/")
+    arquivo=paste(file_p,"Dados de Saida/Graficos/Padroes/Vento Verificado",sep="/")
     setwd(arquivo)
     dev.copy(device = jpeg, file = paste(vUsina,"_Classe_",ic,"Vento.jpeg",sep=""), width = 700, height = 700, res = 100)
     dev.off()

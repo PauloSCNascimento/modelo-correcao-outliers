@@ -1,1 +1,1 @@
-"Tempo Comutacional gasto em min:";"0.416166666666201"
+"Tempo Comutacional gasto em min:";"1.50650000000217"

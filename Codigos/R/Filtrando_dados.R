@@ -57,7 +57,7 @@ Imprimir=as.numeric(Dad[2:tam[1],5])
 
 
 
-arquivo=paste(file_p,"Dados de Entrada","Geração Verificada","Dados Originais",sep="/")
+arquivo=paste(file_p,"Dados de Entrada","Geracao Verificada","Dados Originais",sep="/")
 setwd(arquivo)
 dados <- read.table(paste(Usinas[1],"_Ger_Verif_",FontesDados[1],".txt",sep = ""),header=FALSE, sep=";")
 
@@ -94,7 +94,7 @@ for (iusi in 1:Nusinas){
   ####################################################
   ####################################################
   # Leitura e preparação de dados
-  arquivo=paste(file_p,"Dados de Entrada","Geração Verificada","Dado Pre Tratado",sep="/")
+  arquivo=paste(file_p,"Dados de Entrada","Geracao Verificada","Dado Pre Tratado",sep="/")
   setwd(arquivo)
   dad1_n <- read.table(paste(Usinas[iusi],"_Ger_Verif_",FontesDados[1],".txt",sep = ""),header=FALSE, sep=";")
   dad1_n=dad1_n[(DeH:(AteH)),]
@@ -107,7 +107,7 @@ for (iusi in 1:Nusinas){
   dad1=dad1_n
   dad1_orig=dad1_n
   
-  arquivo=paste(file_p,"Dados de Entrada","Geração Verificada","Dados Originais",sep="/")
+  arquivo=paste(file_p,"Dados de Entrada","Geracao Verificada","Dados Originais",sep="/")
   setwd(arquivo)
   dad_PI_n <- read.table(paste(Usinas[iusi],"_Ger_Verif_",FontesDados[1],".txt",sep = ""),header=FALSE, sep=";")
   dad_PI_n=dad_PI_n[(DeH:(AteH)),]
@@ -142,7 +142,7 @@ for (iusi in 1:Nusinas){
   Ger_Filtrada_n[(DeH:(AteH)),]=Ger_Filtrada
   #escrevendo a tabela com os dados corrigidos
   if (Imprimir[iusi]==1){
-    arquivo=paste(file_p,"Dados de Saida/Arquivos","Geração Verificada",paste(Usinas[iusi],"_Ger_Verif_Filtr_Consis.txt",sep=""),sep="/")
+    arquivo=paste(file_p,"Dados de Saida/Arquivos","Geracao Verificada",paste(Usinas[iusi],"_Ger_Verif_Filtr_Consis.txt",sep=""),sep="/")
     write.table(Ger_Filtrada_n,  file.path(arquivo), sep=";",row.names = FALSE, col.names = FALSE)
   }
   ####################################################
